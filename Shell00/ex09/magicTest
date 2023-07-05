@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find -m ft_magic test
+find -m ft_magic test2
