@@ -1,1 +1,1 @@
-ls -l | sed G
+ls -l | awk "NR%2==0"
