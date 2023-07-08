@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plalanda <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: plalanda <plalanda@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 15:56:35 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/06 15:56:38 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/08 20:10:03 by plalanda          #+#    #+#             */
+/*   Updated: 2023/07/08 20:10:08 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_combn(int n);
+void	ft_print_comb2(void);
 
 int	power(int base, int exp)
 {
@@ -109,21 +109,33 @@ void	print_num(int nb, int k)
 	}
 }
 
-void	ft_print_combn(int n)
+void	ft_print_comb2(void)
 {
-	int	j;
-	int	tst;
+	int	a;
+	int	b;
 
-	j = 0;
-	while (j < power(10, n))
+	a = 0;
+	b = 0;
+	while (a < 100)
 	{
-		tst = test_num(j, n);
-		if (tst)
+		while (b < 100)
 		{
-			print_num(j, n);
+			print_num(a, 2);
 			write(1, " ", 1);
+			print_num(b, 2);
+			if (((b == 99) && (a == 99)) == 0)
+			{
+				write(1, ", ", 2);
+			}
+			b++;
 		}
-		j++;
+		b = 0;
+		a++;
 	}
-	write(1, "\n", 1);
+}
+
+int	main(void)
+{
+	ft_print_comb2();
+	return (0);
 }

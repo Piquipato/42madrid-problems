@@ -11,11 +11,8 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
-void	ft_print_combn(void);
+void	ft_print_comb(int n);
 
 int	power(int base, int exp)
 {
@@ -58,13 +55,15 @@ int	test_num(int j, int n)
 	return (tst);
 }
 
+/*
+MY VERSION
 void	print_num(int j, int n)
 {
 	int	k;
 	int	ld;
 	int	nd;
 	int	crr;
-	char	txt[16];
+	char	txt[n + 1];
 
 	k = n - 1;
 	crr = j;
@@ -79,14 +78,44 @@ void	print_num(int j, int n)
 	}
 	write(1, &txt, n + 1);
 }
+*/
 
-void	ft_print_combn(void)
+void	print_num(int nb, int k)
+{
+	int	digit;
+
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+		print_num(nb, k);
+	}
+	else if (nb / power(10, k - 1) < 1 && k > 0)
+	{
+		write(1, "0", 1);
+		k--;
+		print_num(nb, k);
+	}
+	else if (nb > 9)
+	{
+		k--;
+		print_num(nb / 10, k);
+		print_num(nb % 10, 0);
+	}
+	else
+	{
+		digit = nb + '0';
+		write(1, &digit, 1);
+	}
+}
+
+void	ft_print_comb(int n)
 {
 	int	j;
 	int	tst;
 
 	j = 0;
-	while (j < power(10, 3))
+	while (j < power(10, n))
 	{
 		tst = test_num(j, n);
 		if (tst)
@@ -97,10 +126,4 @@ void	ft_print_combn(void)
 		j++;
 	}
 	write(1, "\n", 1);
-}
-
-int	main(void)
-{
-	ft_print_comb();
-	return (0);
 }

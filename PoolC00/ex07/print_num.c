@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plalanda <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: plalanda <plalanda@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 15:56:35 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/06 15:56:38 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/08 20:52:51 by plalanda          #+#    #+#             */
+/*   Updated: 2023/07/08 20:52:55 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-void	ft_print_comb(int n);
 
 int	power(int base, int exp)
 {
@@ -31,57 +30,42 @@ int	power(int base, int exp)
 	return (prd);
 }
 
-int	test_num(int j, int n)
+void	print_num(int nb, int k)
 {
-	int	k;
-	int	ld;
-	int	nd;
-	int	crr;
-	int	tst;
+	int	letra;
 
-	tst = 1;
-	k = 0;
-	crr = j;
-	ld = crr % 10;
-	while (k < n)
+	if (nb == -2147483648)
 	{
-		crr = (crr - ld) / 10;
-		nd = crr % 10;
-		if (ld <= nd && k != (n - 1))
-		{
-			tst = 0;
-		}
-		ld = nd;
-		k++;
+		write(1, "-2", 2);
+		print_num(147483648, k);
 	}
-	return (tst);
+	else if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+		print_num(nb, k);
+	}
+	else if (nb / power(10, k) < 1 && k > 0)
+	{
+		write(1, "0", 1);
+		k--;
+		print_num(nb, k);
+	}
+	else if (nb > 9)
+	{
+		k--; 
+		print_num(nb / 10, k); 
+		print_num(nb % 10, 0);
+	}
+	else
+	{
+		letra = nb + 48;
+		write(1, &letra, 1);
+	}
 }
 
 /*
-MY VERSION
-void	print_num(int j, int n)
-{
-	int	k;
-	int	ld;
-	int	nd;
-	int	crr;
-	char	txt[n + 1];
-
-	k = n - 1;
-	crr = j;
-	ld = crr % 10;
-	while (k >= 0)
-	{
-		crr = (crr - ld) / 10;
-		nd = crr % 10;
-		txt[k] = ld + '0';
-		ld = nd;
-		k--;
-	}
-	write(1, &txt, n + 1);
-}
-*/
-
+NORMINETTE APPROVED VERSION
 void	print_num(int nb, int k)
 {
 	int	digit;
@@ -110,28 +94,38 @@ void	print_num(int nb, int k)
 		write(1, &digit, 1);
 	}
 }
+*/
 
-void	ft_print_comb(int n)
+int	main(int argc, char *argv[])
 {
 	int	j;
-	int	tst;
+	int	dtcn;
+	int	dtck;
+	int	n;
+	int	k;
 
 	j = 0;
-	while (j < power(10, n))
+	dtcn = 0;
+	dtck = 0;
+	while (j < argc)
 	{
-		tst = test_num(j, n);
-		if (tst)
+		if (dtcn && dtck)
 		{
-			print_num(j, n);
-			write(1, " ", 1);
+			print_num(n, k);
+			dtcn = 0;
+			dtck = 0;
+		}
+		if (strcmp(argv[j], "-n") == 0 && (j + 1) < argc)
+		{
+			dtcn = 1;
+			n = atoi(argv[j + 1]);
+		}
+		if (strcmp(argv[j], "-k") == 0 && (j + 1) < argc)
+		{
+			dtck = 1;
+			k = atoi(argv[j + 1]);
 		}
 		j++;
 	}
-	write(1, "\n", 1);
-}
-
-int	main(void)
-{
-	ft_print_comb(3);
 	return (0);
 }
