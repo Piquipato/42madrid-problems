@@ -32,39 +32,39 @@ int	is_between(int n, int a, int b)
 	}
 }
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_numeric(char *str)
 {
-	int	is_alpha;
+	int	is_num;
 	int	letra;
 
-	is_alpha = 1;
+	is_num = 1;
 	while (*str != '\0')
 	{
 		letra = (int) *str;
-		if ((is_between(letra, 65, 90) || is_between(letra, 97, 122)) == 0)
+		if (is_between(letra, 48, 57) == 0)
 		{
-			is_alpha = 0;
+			is_num = 0;
 		}
 		str++;
 	}
-	return (is_alpha);
+	return (is_num);
 }
 
 void print_is_alpha(char *str)
 {
-	int is_alpha = ft_str_is_alpha(str);
+	int is_alpha = ft_str_is_numeric(str);
 	if (is_alpha)
 	{
-		printf("The string %s is alphabetic\n", str);
+		printf("The string %s is numeric\n", str);
 	} else {
-		printf("The string %s is not alphabetic\n", str);
+		printf("The string %s is not numeric\n", str);
 	}
 }
 
 int	main(void)
 {
-	char alpha[] = "913972198479";
-	char notalpha [] = "Hola, que tal 1923879";
+	char alpha[] = "919217904371";
+	char notalpha [] = "Hola, que tal 1234123";
 	char amialpha[] = "";
 	
 	print_is_alpha(&alpha[0]);
