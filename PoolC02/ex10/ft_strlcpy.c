@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plalanda <plalanda@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: cream <plalanda@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/09 21:42:51 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/09 21:42:54 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/11 17:19:18 by cream             #+#    #+#             */
+/*   Updated: 2023/07/11 17:19:19 by cream            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char*src, unsigned int n)
+char	*ft_strlcpy(char *dest, char*src, unsigned int n)
 {
 	int	srcd;
 	int	k;
@@ -19,7 +19,7 @@ char	*ft_strncpy(char *dest, char*src, unsigned int n)
 	k = 0;
 	while (srcd)
 	{
-		if (*(src + k) == '\0' || k > n - 1)
+		if (*(src + k) == '\0' || k > n - 2)
 		{
 			*(dest + k) = '\0';
 			srcd = 0;
