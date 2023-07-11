@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_numeric(char *str);
+int	ft_str_is_uppercase(char *str);
 int	is_between(int n, int a, int b);
 
-int	ft_str_is_numeric(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	int	is_num;
 	int	letra;
@@ -22,7 +22,7 @@ int	ft_str_is_numeric(char *str)
 	while (*str != '\0')
 	{
 		letra = (int) *str;
-		if (is_between(letra, 97, 122) == 0)
+		if (is_between(letra, 65, 90) == 0)
 		{
 			is_num = 0;
 		}

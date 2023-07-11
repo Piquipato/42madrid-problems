@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int	ft_str_is_lowercase(char *str);
 int	is_between(int n, int a, int b);
 
@@ -41,4 +43,27 @@ int	is_between(int n, int a, int b)
 	{
 		return (0);
 	}
+}
+
+void print_is_alpha(char *str)
+{
+	int is_alpha = ft_str_is_lowercase(str);
+	if (is_alpha)
+	{
+		printf("The string %s is lowercase\n", str);
+	} else {
+		printf("The string %s is not lowercase\n", str);
+	}
+}
+
+int	main(void)
+{
+	char alpha[] = "holaquetal";
+	char notalpha [] = "HolaQueTal";
+	char amialpha[] = "";
+	
+	print_is_alpha(&alpha[0]);
+	print_is_alpha(&notalpha[0]);
+	print_is_alpha(&amialpha[0]);
+
 }

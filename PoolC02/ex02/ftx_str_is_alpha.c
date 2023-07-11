@@ -63,8 +63,8 @@ void print_is_alpha(char *str)
 
 int	main(void)
 {
-	char alpha[] = "913972198479";
-	char notalpha [] = "Hola, que tal 1923879";
+	char alpha[] = "holaquetal";
+	char notalpha [] = "Hola, que tal";
 	char amialpha[] = "";
 	
 	print_is_alpha(&alpha[0]);
