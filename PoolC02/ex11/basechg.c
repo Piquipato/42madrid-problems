@@ -21,6 +21,9 @@ char 	*to_bin(char *txt, int n, int s);
 int		OoM(int n, int b);
 int		power(int base, int exp);
 int 	main(int argc, char *argv[]);
+int		ft_strlen(char *str);
+char 	*to_base_alt(char *txt, int n, int s, char *base);
+int 	degen(int n, int s, int b);
 
 int	OoM(int n, int b)
 {
@@ -81,6 +84,65 @@ char *to_bin(char *txt, int n, int s)
 	return (txt);
 }
 
+char *to_base_alt(char *txt, int n, int s, char *base)
+{
+	const int	b = ft_strlen(base);
+	int			k;
+	int			div;
+	int			mod;
+
+	k = degen(n, s, b) - 1;
+	div = n;
+	while (div != 0 || k >= 0)
+	{
+		mod = div % b;
+		txt[k] = base[mod];
+		div = (div - mod) / b;
+		k--;
+	}
+	txt[degen(n, s, b)] = '\0';
+	return (txt);
+}
+
+int degen(int n, int s, int b)
+{
+	int tmp;
+	int oom;
+
+	tmp = n;
+	oom = 0;
+	if (n == 0)
+		oom = 1;
+	while (tmp != 0)
+	{
+		tmp = (tmp - tmp % b) / b;
+		oom++;
+	}
+	if (oom > s)
+	{
+		return (oom);
+	}
+	else
+	{
+		return (s);
+	}
+}
+
+int	ft_strlen(char *str)
+{
+	int	count;
+	char *tmp;
+
+	count = 0;
+	tmp = str;
+	while (*tmp != '\0')
+	{
+		count++;
+		tmp++;
+	}
+	return (count);
+}
+
 void	write_num(char *txt, int *idx, int n, int s, int b, char *base)
 {
 	if (n < 0)
@@ -114,7 +176,7 @@ int main(int argc, char *argv[])
 	int dtcn = 0;
 	int dtck = 0;
 	int n, k;
-	char txt[22];
+	char txt[66];
 	for (int j = 1; j < argc; j++)
 	{
 		if (!strcmp("-n", argv[j]))
@@ -130,7 +192,7 @@ int main(int argc, char *argv[])
 				k = atoi(argv[j + 1]);
 		}
 		else if (dtcn && dtck)
-			printf("%s\n", to_hex(txt, n, k));
+			printf("%s\n", to_base_alt(txt, n, k, "0123456789abcdef"));
 	}
 	return (0);
 }
