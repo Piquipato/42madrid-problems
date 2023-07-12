@@ -13,30 +13,22 @@
 #include <stdio.h>
 
 void	ft_putstr_non_printable(char *str);
-int		is_between(int n, int a, int b);
-int		power(int base, int exp);
-void	insert_str(char *str, int idx);
-char 	*to_hex(char *txt, int n, int s);
-void	write_num(char *txt, int *idx, int n, int s, int b, char *base);
-
-int	main(int argc, char *argv[])
-{
-	char str[] = "Coucou\ntu vas bien ?";
-	ft_putstr_non_printable(str);
-	printf("%s\n", str);
-}
+char	*to_base_alt(char *txt, int n, int s, char *base);
+int		degen(int n, int s, int b);
+int		ft_strlen(char *str);
 
 void	ft_putstr_non_printable(char *str)
 {
 	char	tmp[1024];
-	int	k;
-	char *ptr;
-	char *hex;
+	int		k;
+	char	*ptr;
+	char	hex[66];
+	char	*nstr;
 
 	ptr = str;
 	while (*ptr != '\0')
 	{
-		if (!is_between(*ptr, 32, 127))
+		if (!(*ptr >= 32 && *ptr <= 127))
 		{
 			k = 0;
 			while (str[k] != *ptr)
@@ -44,16 +36,17 @@ void	ft_putstr_non_printable(char *str)
 				tmp[k] = str[k];
 				k++;
 			}
-			hex = to_hex(hex, *ptr, 2);
-			tmp[k + 1] = '\\';
-			tmp[k + 2] = hex[0];
-			tmp[k + 3] = hex[1];
-			while (str[k + 3] != '\0')
+			nstr = to_base_alt(hex, *ptr, 2, "0123456789abcdef");
+			tmp[k] = '\\';
+			tmp[k + 1] = nstr[0];
+			tmp[k + 2] = nstr[1];
+			k++;
+			while (str[k] != '\0')
 			{
-				tmp[k + 3] = str[k];
+				tmp[k + 2] = str[k];
 				k++;
 			}
-			tmp[k + 3] = '\0';
+			tmp[k + 2] = '\0';
 			k = 0;
 			while (tmp[k] != '\0')
 			{
@@ -65,6 +58,73 @@ void	ft_putstr_non_printable(char *str)
 	}
 }
 
+int	main(int argc, char *argv[])
+{
+	char str[] = "Coucou\ntu vas bien ?";
+	ft_putstr_non_printable(str);
+	printf("%s\n", str);
+}
+
+char	*to_base_alt(char *txt, int n, int s, char *base)
+{
+	const int	b = ft_strlen(base);
+	int			k;
+	int			div;
+	int			mod;
+
+	k = degen(n, s, b) - 1;
+	div = n;
+	while (div != 0 || k >= 0)
+	{
+		mod = div % b;
+		txt[k] = base[mod];
+		div = (div - mod) / b;
+		k--;
+	}
+	txt[degen(n, s, b)] = '\0';
+	return (txt);
+}
+
+int	degen(int n, int s, int b)
+{
+	int	tmp;
+	int	oom;
+
+	tmp = n;
+	oom = 0;
+	if (n == 0)
+		oom = 1;
+	while (tmp != 0)
+	{
+		tmp = (tmp - tmp % b) / b;
+		oom++;
+	}
+	if (oom > s)
+	{
+		return (oom);
+	}
+	else
+	{
+		return (s);
+	}
+}
+
+int	ft_strlen(char *str)
+{
+	int		count;
+	char	*tmp;
+
+	count = 0;
+	tmp = str;
+	while (*tmp != '\0')
+	{
+		count++;
+		tmp++;
+	}
+	return (count);
+}
+
+/*
 void	insert_str(char *str, int idx)
 {
 	k = 0;
@@ -76,68 +136,4 @@ void	insert_str(char *str, int idx)
 	tmp[k + 1] = '\\';
 	tmp[k + 2] =
 }
-
-char *to_hex(char *txt, int n, int s)
-{
-	int		idx;
-
-	idx = 0;
-	write_num(txt, &idx, n, s, 16, "0123456789abcdef");
-	txt[idx] = '\0';
-	return (txt);
-}
-
-void	write_num(char *txt, int *idx, int n, int s, int b, char *base)
-{
-	if (n < 0)
-	{
-		txt[*idx] = '-';
-		(*idx)++;
-		write_num(txt, idx, -n, s, b, base);
-	}
-	else if (n / power(b, s - 1) < 1 && s > 0)
-	{
-		txt[*idx] = '0';
-		(*idx)++;
-		s--;
-		write_num(txt, idx, n, s, b, base);
-	}
-	else if (n > b - 1)
-	{
-		s--;
-		write_num(txt, idx, n / b, s, b, base);
-		write_num(txt, idx, n % b, 0, b, base);
-	}
-	else
-	{
-		txt[*idx] = base[n];
-		(*idx)++;
-	}
-}
-
-int	power(int base, int exp)
-{
-	int	k;
-	int	prd;
-
-	prd = 1;
-	k = 1;
-	while (k <= exp)
-	{
-		prd = prd * base;
-		++k; 
-	}
-	return (prd);
-}
-
-int	is_between(int n, int a, int b)
-{
-	if (n >= a && n <= b)
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
-}
+*/
