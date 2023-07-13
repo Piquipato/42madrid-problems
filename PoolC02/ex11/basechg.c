@@ -90,9 +90,10 @@ char *to_base_alt(char *txt, int n, int s, char *base)
 	int			k;
 	int			div;
 	int			mod;
-
-	k = degen(n, s, b) - 1;
-	div = n;
+	int			idx;
+	
+	k = n < 0 ? degen(n, s, b) : (degen(n, s, b) - 1);
+	div = n < 0 ? -n : n;
 	while (div != 0 || k >= 0)
 	{
 		mod = div % b;
@@ -100,7 +101,10 @@ char *to_base_alt(char *txt, int n, int s, char *base)
 		div = (div - mod) / b;
 		k--;
 	}
-	txt[degen(n, s, b)] = '\0';
+	if (n < 0)
+		txt[0] = '-';
+	idx = n < 0 ? (degen(n, s, b) + 1) : degen(n, s, b);
+	txt[idx] = '\0';
 	return (txt);
 }
 
@@ -192,7 +196,7 @@ int main(int argc, char *argv[])
 				k = atoi(argv[j + 1]);
 		}
 		else if (dtcn && dtck)
-			printf("%s\n", to_base_alt(txt, n, k, "0123456789abcdef"));
+			printf("%s\n", to_base_alt(txt, n, k, "0123456789"));
 	}
 	return (0);
 }
