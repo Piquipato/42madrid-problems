@@ -21,13 +21,17 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	{
 		if (*(src + k) == '\0' || k > n - 1)
 		{
-			*(dest + k) = '\0';
 			srcd = 0;
 		}
 		else
 		{
 			*(dest + k) = *(src + k);
+			k++;
 		}
+	}
+	while (*(src + k) != '\0')
+	{
+		*(dest + k) = '\0';
 		k++;
 	}
 	return (dest);

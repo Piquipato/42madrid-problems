@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-void	ft_print_comb(int n);
+void	ft_print_comb(void);
 
 int	power(int base, int exp)
 {
@@ -109,21 +109,22 @@ void	print_num(int nb, int k)
 	}
 }
 
-void	ft_print_comb(int n)
+void	ft_print_comb(void)
 {
 	int	j;
+	int	n;
 	int	tst;
 
 	j = 0;
+	n = 3;
 	while (j < power(10, n))
 	{
 		tst = test_num(j, n);
 		if (tst)
 		{
 			print_num(j, n);
-			write(1, " ", 1);
+			write(1, ", ", 2);
 		}
 		j++;
 	}
-	write(1, "\n", 1);
 }

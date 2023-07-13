@@ -115,21 +115,20 @@ void	ft_print_comb2(void)
 	int	b;
 
 	a = 0;
-	b = 0;
 	while (a < 100)
 	{
+		b = a + 1;
 		while (b < 100)
 		{
 			print_num(a, 2);
 			write(1, " ", 1);
 			print_num(b, 2);
-			if (((b == 99) && (a == 99)) == 0)
+			if (!((b == 99) && (a == 99)))
 			{
 				write(1, ", ", 2);
 			}
 			b++;
 		}
-		b = 0;
 		a++;
 	}
 }

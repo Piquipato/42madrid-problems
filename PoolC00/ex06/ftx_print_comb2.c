@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "putnbr.h"
 
 void	ft_print_comb2(void);
 
@@ -80,6 +81,7 @@ void	print_num(int j, int n)
 }
 */
 
+/*
 void	print_num(int nb, int k)
 {
 	int	digit;
@@ -108,6 +110,7 @@ void	print_num(int nb, int k)
 		write(1, &digit, 1);
 	}
 }
+*/
 
 void	ft_print_comb2(void)
 {
@@ -115,21 +118,20 @@ void	ft_print_comb2(void)
 	int	b;
 
 	a = 0;
-	b = 0;
 	while (a < 100)
 	{
+		b = a + 1;
 		while (b < 100)
 		{
-			print_num(a, 2);
+			ft_putnbr(a, 2);
 			write(1, " ", 1);
-			print_num(b, 2);
-			if (((b == 99) && (a == 99)) == 0)
+			ft_putnbr(b, 2);
+			if (!((b == 99) && (a == 98)))
 			{
 				write(1, ", ", 2);
 			}
 			b++;
 		}
-		b = 0;
 		a++;
 	}
 }

@@ -22,6 +22,7 @@ char	*ft_strcpy(char *dest, char*src)
 		*(dest + k) = *(src + k);
 		if (*(src + k) == '\0')
 		{
+			*(dest + k) = *(src + k);
 			srcd = 0;
 		}
 		k++;

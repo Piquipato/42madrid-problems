@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+char	*ft_strlcpy(char *dest, char *src, unsigned int n);
+int		ft_strlen(char *str);
+
 char	*ft_strlcpy(char *dest, char *src, unsigned int n)
 {
 	int	srcd;
@@ -30,5 +33,18 @@ char	*ft_strlcpy(char *dest, char *src, unsigned int n)
 		}
 		k++;
 	}
-	return (dest);
+	return (ft_strlen(src));
+}
+
+int	ft_strlen(char *str)
+{
+	int	count;
+
+	count = 0;
+	while (*str != '\0')
+	{
+		count++;
+		str++;
+	}
+	return (count);
 }

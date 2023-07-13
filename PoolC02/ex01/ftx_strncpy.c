@@ -13,7 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 
-char	*ft_strncpy(char *dest, char*src, unsigned int n)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	int	srcd;
 	int	k;
@@ -22,11 +22,19 @@ char	*ft_strncpy(char *dest, char*src, unsigned int n)
 	k = 0;
 	while (srcd)
 	{
-		*(dest + k) = *(src + k);
-		if (*(src + k) == '\0' || k >= n - 1)
+		if (*(src + k) == '\0' || k > n - 1)
 		{
 			srcd = 0;
 		}
+		else
+		{
+			*(dest + k) = *(src + k);
+			k++;
+		}
+	}
+	while (*(src + k) != '\0')
+	{
+		*(dest + k) = '\0';
 		k++;
 	}
 	return (dest);

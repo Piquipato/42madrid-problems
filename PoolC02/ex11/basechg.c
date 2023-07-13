@@ -179,7 +179,9 @@ int main(int argc, char *argv[])
 {
 	int dtcn = 0;
 	int dtck = 0;
+	int dtcb = 0;
 	int n, k;
+	char *base;
 	char txt[66];
 	for (int j = 1; j < argc; j++)
 	{
@@ -195,8 +197,14 @@ int main(int argc, char *argv[])
 			if (j != argc - 1)
 				k = atoi(argv[j + 1]);
 		}
-		else if (dtcn && dtck)
-			printf("%s\n", to_base_alt(txt, n, k, "0123456789"));
+		else if (!strcmp("-b", argv[j]))
+		{
+			dtcb = 1;
+			if (j != argc - 1)
+				base = argv[j + 1];
+		}
+		else if (dtcn && dtck && dtcb)
+			printf("%s\n", to_base_alt(txt, n, k, base));
 	}
 	return (0);
 }

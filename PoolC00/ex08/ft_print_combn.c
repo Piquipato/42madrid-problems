@@ -121,9 +121,8 @@ void	ft_print_combn(int n)
 		if (tst)
 		{
 			print_num(j, n);
-			write(1, " ", 1);
+			write(1, ", ", 2);
 		}
 		j++;
 	}
-	write(1, "\n", 1);
 }

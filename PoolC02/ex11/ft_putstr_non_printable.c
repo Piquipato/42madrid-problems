@@ -23,7 +23,6 @@ void	ft_putstr_non_printable(char *str)
 	int		k;
 	char	*ptr;
 	char	hex[66];
-	char	*nstr;
 
 	ptr = str;
 	while (*ptr != '\0')
@@ -36,10 +35,11 @@ void	ft_putstr_non_printable(char *str)
 				tmp[k] = str[k];
 				k++;
 			}
-			nstr = to_base_alt(hex, *ptr, 2, "0123456789abcdef");
+			to_base_alt(hex, *ptr, 2, "0123456789abcdef");
+			printf("%s\n", hex);
 			tmp[k] = '\\';
-			tmp[k + 1] = nstr[0];
-			tmp[k + 2] = nstr[1];
+			tmp[k + 1] = hex[0];
+			tmp[k + 2] = hex[1];
 			k++;
 			while (str[k] != '\0')
 			{
