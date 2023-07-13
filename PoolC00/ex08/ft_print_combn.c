@@ -24,7 +24,7 @@ int	power(int base, int exp)
 	while (k <= exp)
 	{
 		prd = prd * base;
-		++k; 
+		++k;
 	}
 	return (prd);
 }
