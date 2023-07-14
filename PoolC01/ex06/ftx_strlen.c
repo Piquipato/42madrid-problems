@@ -22,6 +22,10 @@ int	ft_strlen(char *str)
 		count++;
 		str++;
 	}
+	/*
+	while (str[count] != '\0')
+		count++;
+	*/
 	return (count);
 }
 

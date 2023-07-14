@@ -22,7 +22,7 @@ int	main(void)
 	int	test;
 
 	test = 7;
-	printf("%d\n", test);
+	printf("Valor %d en el puntero %d, %p\n", test, &test, &test);
 	ft_ft(&test);
-	printf("%d\n", test);
+	printf("Valor %d en el puntero %d, %p\n", test, &test, &test);
 }

@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
+void	ft_sort_int_tab(int *tab, int size);
+
 int randint(int n) {
   if ((n - 1) == RAND_MAX) {
     return rand();
@@ -107,7 +109,7 @@ int	main(void)
 
 	randintlist(mylist, 12);
 	print_array(mylist, 12);
-	ft_rev_int_tab(mylist, 12);
+	ft_sort_int_tab(mylist, 12);
 	print_array(mylist, 12);
 	return (0);
 }
