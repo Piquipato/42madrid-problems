@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
 
 void	ft_putstr_non_printable(char *str);
@@ -19,42 +20,22 @@ int		ft_strlen(char *str);
 
 void	ft_putstr_non_printable(char *str)
 {
-	char	tmp[1024];
-	int		k;
-	char	*ptr;
 	char	hex[66];
+	int		k;
 
-	ptr = str;
-	while (*ptr != '\0')
+	while (str[k] != '\0')
 	{
-		if (!(*ptr >= 32 && *ptr <= 127))
+		if (!(str[k] >= 32 && str[k] <= 126))
 		{
-			k = 0;
-			while (str[k] != *ptr)
-			{
-				tmp[k] = str[k];
-				k++;
-			}
-			to_base_alt(hex, *ptr, 2, "0123456789abcdef");
-			printf("%s\n", hex);
-			tmp[k] = '\\';
-			tmp[k + 1] = hex[0];
-			tmp[k + 2] = hex[1];
-			k++;
-			while (str[k] != '\0')
-			{
-				tmp[k + 2] = str[k];
-				k++;
-			}
-			tmp[k + 2] = '\0';
-			k = 0;
-			while (tmp[k] != '\0')
-			{
-				str[k] = tmp[k];
-				k++;
-			}
+			write(1, "\\", 1);
+			to_base_alt(hex, str[k], 2, "0123456789abcdef");
+			write(1, hex, 2);
 		}
-		ptr++;
+		else
+		{
+			write(1, &str[k], 1);
+		}
+		k++;
 	}
 }
 
@@ -62,7 +43,6 @@ int	main(int argc, char *argv[])
 {
 	char str[] = "Coucou\ntu vas bien ?";
 	ft_putstr_non_printable(str);
-	printf("%s\n", str);
 }
 
 char	*to_base_alt(char *txt, int n, int s, char *base)
