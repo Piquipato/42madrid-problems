@@ -12,7 +12,8 @@
 
 void ft_txtnbr(char *txt, int n, int s, char *base)
 {
-	int k;
+	int 	k;
+	char	*buf;
 	
 	k = 0;
 	if (n < 0)
@@ -20,6 +21,7 @@ void ft_txtnbr(char *txt, int n, int s, char *base)
 		n = -n;
 	while (n != 0)
 	{
+		
 		txt[k++] = base[n % 10];
 		n /= 10;
 	}
