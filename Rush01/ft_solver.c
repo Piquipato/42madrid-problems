@@ -16,11 +16,16 @@
 int	**ft_solver(int **mat, int **cls, int n, int *p)
 {
 	int	k;
+	int **cp;
 
 	k = 0;
+	cp = rm_impossible(mat, cls, n);
 	printf("Antes de remover posibilidades\n");
-	while (fix_answer(mat, rm_impossible(mat, cls, n), n) && k < 100)
+	while (fix_answer(mat, cp, n) && k < 100)
+	{
+		cp = rm_impossible(mat, cls, n);
 		printf("Hago bucle %d\n", k++);
+	}
 	printf("Despues de remover posibilidades\n");
 	if (p[0] == n)
 	{
