@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cream <plalanda@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 14:54:27 by cream             #+#    #+#             */
-/*   Updated: 2023/07/16 14:54:29 by cream            ###   ########.fr       */
+/*   Created: 2023/07/16 21:16:40 by cream             #+#    #+#             */
+/*   Updated: 2023/07/16 21:16:50 by cream            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "latin.h"
 
-int	main(int argc, char *argv[])
+void	check_result(int **mat, int n)
 {
-	rush_app(4, "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2");
-	return (0);
-}
+	int	i;
+	int	j;
 
-void	rush_app(int n, char *str)
-{
-	int	**matrix;
-	int **cls;
-	int *p;
-
-	matrix = make_matrix(n, n);
-	cls = clue_parse(str, n);
-	fill_matrix(matrix, n);
-	p = (int *) calloc(2, sizeof(int));
-	ft_solver(matrix, cls, n, p);
-	printf("I crashed before!");
-	check_result(matrix, n);
-	rm_matrix(cls);
-	rm_matrix(matrix);
+	i = 0;
+	while (i < n)
+	{
+		j = 0;
+		while (j < n)
+		{
+			if (!(is_pow2(mat[i][j])))
+				write(1, "Error", 5);
+			j++;
+		}
+		i++;
+	}
+	print_matrix(log_mat(mat, n), n, n);
 }

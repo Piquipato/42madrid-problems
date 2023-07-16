@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #ifndef __LATIN_H__
-#	define __LATIN_H__
+#define __LATIN_H__
 
 // Matrix Utilities:
+void	rush_app(int n, char *str);
 int		**make_matrix(int n, int m);
 void	rm_matrix(int **mat);
 void	print_matrix(int **mat, int n, int m);
@@ -22,6 +23,7 @@ int		power(int base, int exp);
 int		logar(int n, int b);
 int		**log_mat(int **mat, int n);
 int		**pow_mat(int **mat, int n);
+void	print_vec(int *mat, int n);
 void	fill_matrix(int **mat, int n);
 int		ft_atoi(const char *str);
 void	ft_putnbr(int nb);
@@ -30,5 +32,13 @@ int		**ft_solver(int **mat, int **cls, int n, int *p);
 int		**rm_impossible(int **mat, int **cls, int n);
 int		fix_answer(int **new, int **last, int n);
 int		**copy_matrix(int **mat, int n, int m);
+void	rm_colup(int **mat, int **cls, int n);
+void	rm_coldown(int **mat, int **cls, int n);
+void	rm_rowleft(int **mat, int **cls, int n);
+void	rm_rowright(int **mat, int **cls, int n);
+void	rm_val_rc(int **mat, int n);
+void	rm_cls_rc(int **mat, int **cls, int n);
+int 	**guess(int **mat, int **cls, int n, int *p);
+void	check_result(int **mat, int n);
 
 #endif

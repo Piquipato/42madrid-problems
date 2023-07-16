@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   copy_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cream <plalanda@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 14:54:27 by cream             #+#    #+#             */
-/*   Updated: 2023/07/16 14:54:29 by cream            ###   ########.fr       */
+/*   Created: 2023/07/16 19:37:57 by cream             #+#    #+#             */
+/*   Updated: 2023/07/16 19:38:07 by cream            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "latin.h"
 
-int	main(int argc, char *argv[])
+int	**copy_matrix(int **mat, int n, int m)
 {
-	rush_app(4, "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2");
-	return (0);
-}
+	int	**sol;
+	int	i;
+	int	j;
 
-void	rush_app(int n, char *str)
-{
-	int	**matrix;
-	int **cls;
-	int *p;
-
-	matrix = make_matrix(n, n);
-	cls = clue_parse(str, n);
-	fill_matrix(matrix, n);
-	p = (int *) calloc(2, sizeof(int));
-	ft_solver(matrix, cls, n, p);
-	printf("I crashed before!");
-	check_result(matrix, n);
-	rm_matrix(cls);
-	rm_matrix(matrix);
+	sol = (int **) malloc(sizeof(mat));
+	i = 0;
+	while (i < n)
+	{
+		while (j < m)
+			sol[i][j++] = mat[i][j];
+		i++;
+	}
+	return (sol);
 }

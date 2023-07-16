@@ -10,37 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "latin.h"
 
-int	**ft_solver(int **mat, int **aux, int n, int *p)
+int	**ft_solver(int **mat, int **cls, int n, int *p)
 {
-	
+	int	k;
+
+	k = 0;
+	printf("Antes de remover posibilidades\n");
+	while (fix_answer(mat, rm_impossible(mat, cls, n), n) && k < 100)
+		printf("Hago bucle %d\n", k++);
+	printf("Despues de remover posibilidades\n");
+	if (p[0] == n)
+	{
+		if (p[1] == n)
+			return (mat);
+		else
+		{
+			p[0] = 0;
+			p[1]++;
+		}
+	}
+	printf("Después de remover cambiar de fila\n");
+	return (guess(mat, cls, n, p));
 }
 
-int	**rm_impossible(int **mat, int **cls, int n)
+int	**guess(int **mat, int **cls, int n, int *p)
 {
-	const int	**cp = copy_matrix(mat, n, n);
-	
-}
-
-int	fix_answer(int **new, int **last, int n)
-{
-
-}
-
-int	**copy_matrix(int **mat, int n, int m)
-{
-	int	**sol;
+	int	g;
 	int	i;
 	int	j;
+	int	dt;
 
-	sol = (int **) malloc(sizeof(mat));
-	i = 0;
-	while (i < n)
+	g = 1;
+	printf("Antes de la adivinanza\n");
+	while (g <= n)
 	{
-		while (j < m)
-			sol[i][j++] = mat[i][j];
-		i++;
+		i = 0;
+		dt = 1;
+		while (i < n)
+		{
+			j = 0;
+			while (j < n)
+			{
+				if (mat[i][j] == g)
+				dt = 0;
+			}
+			i++;
+		}
+		if (dt)
+		{
+			mat[i][j] = g;
+			p[0]++;
+			ft_solver(mat, cls, n, p);
+		}	
+		g++;
 	}
-	return (sol);
+	return (mat);
 }

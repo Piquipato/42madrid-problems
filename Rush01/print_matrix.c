@@ -35,3 +35,21 @@ void	print_matrix(int **mat, int n, int m)
 		filas++;
 	}
 }
+
+void	print_vec(int *mat, int n)
+{
+	int elm;
+	int	letra;
+
+	elm = 0;
+	while (elm < n)
+	{
+		letra = mat[elm] + '0';
+		write(1, &letra, 1);
+		if (elm != n - 1)
+			write(1, " ", 1);
+		else
+			write(1, "\n", 1);
+		elm++;
+	}
+}

@@ -22,14 +22,14 @@ int	power(int base, int exp)
 	while (k <= exp)
 	{
 		prd = prd * base;
-		++k; 
+		++k;
 	}
 	return (prd);
 }
 
 int	logar(int n, int b)
 {
-	int ctr;
+	int	ctr;
 	int	k;
 
 	ctr = 0;
