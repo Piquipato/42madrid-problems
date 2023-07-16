@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clue_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cream <plalanda@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 14:54:27 by cream             #+#    #+#             */
-/*   Updated: 2023/07/16 14:54:29 by cream            ###   ########.fr       */
+/*   Created: 2023/07/16 16:07:27 by cream             #+#    #+#             */
+/*   Updated: 2023/07/16 16:07:30 by cream            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "latin.h"
+#include <stdio.h>
 
-int	main(int argc, char *argv[])
+int	**clue_parse(char *str, int n)
 {
-	int **matrix = make_matrix(4, 4);
-	fill_matrix(matrix, 4);
-	print_matrix(matrix, 4, 4);
-	rm_matrix(matrix);
-	return (0);
-}
+	int	**cls;
+	int	i;
+	int	j;
+	int	k;
 
-void	rush_app(int n, char *str)
-{
-	int	**sol;
-	int **cls;
-	int **stat;
-
-	sol = make_matrix(n, n);
-	cls = clue_parse(str, n);
-	stat = make_matrix(n, n);
+	cls = make_matrix(4, n);
+	k = 0;
+	i = 0;
+	j = 0;
+	while (str[k] != '\0')
+	{
+		if (str[k] >= 48 && str[k] <= 57)
+			cls[i][j++] = str[k] - '0';
+		if (j == n)
+		{
+			j = 0;
+			i++;
+		}
+		k++;
+	}
+	return (cls);
 }
