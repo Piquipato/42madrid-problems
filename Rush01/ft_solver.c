@@ -61,7 +61,7 @@ int	**guess(int **mat, int **cls, int n, int *p)
 						p[0] += 1;
 						printf("--------------------------------\nGuessed Matrix:\n");
 						print_matrix(mat, n, n);
-						guess(mat, cls, n, p);
+						ft_solver(mat, cls, n, p);
 						mat[p[0]][p[1]] = dtc;
 					}
 					g++;
