@@ -20,24 +20,14 @@ int	**ft_solver(int **mat, int **cls, int n, int *p)
 
 	k = 0;
 	cp = rm_impossible(mat, cls, n);
-	printf("Antes de remover posibilidades\n");
+
 	while (fix_answer(mat, cp, n) && k < 100)
 	{
 		cp = rm_impossible(mat, cls, n);
-		printf("Hago bucle %d\n", k++);
+		k++;
 	}
-	printf("Despues de remover posibilidades\n");
-	if (p[0] == n)
-	{
-		if (p[1] == n)
-			return (mat);
-		else
-		{
-			p[0] = 0;
-			p[1]++;
-		}
-	}
-	printf("Después de remover cambiar de fila\n");
+	printf("--------------------------------\nIteration Matrix:\n");
+	print_matrix(mat, n, n);
 	return (guess(mat, cls, n, p));
 }
 
@@ -45,32 +35,41 @@ int	**guess(int **mat, int **cls, int n, int *p)
 {
 	int	g;
 	int	i;
-	int	j;
-	int	dt;
+	int	dtc;
 
-	g = 1;
-	printf("Antes de la adivinanza\n");
-	while (g <= n)
+	if (check_result(mat, n, 0))
+		return (mat);
+
+	p[0] = 0;
+	while (p[0] < n)
 	{
-		i = 0;
-		dt = 1;
-		while (i < n)
+		p[1] = 0;
+		while (p[1] < n)
 		{
-			j = 0;
-			while (j < n)
+			i = 0;
+			while (i < n)
 			{
-				if (mat[i][j] == g)
-				dt = 0;
+				g = 1;
+				while (g <= n && dtc != 0)
+				{
+					if (!((mat[p[0]][i] == power(2, g) 
+					|| mat[i][p[1]] == power(2, g))
+					|| (is_pow2(mat[p[0]][p[1]]))))
+					{
+						dtc = mat[p[0]][p[1]];
+						mat[p[0]][p[1]] = power(2, g);
+						p[0] += 1;
+						printf("--------------------------------\nGuessed Matrix:\n");
+						print_matrix(mat, n, n);
+						guess(mat, cls, n, p);
+						mat[p[0]][p[1]] = dtc;
+					}
+					g++;
+				}
+				i++;
 			}
-			i++;
+			p[1]++;
 		}
-		if (dt)
-		{
-			mat[i][j] = g;
-			p[0]++;
-			ft_solver(mat, cls, n, p);
-		}	
-		g++;
+		p[0]++;
 	}
-	return (mat);
 }

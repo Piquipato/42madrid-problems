@@ -18,13 +18,9 @@ int	**rm_impossible(int **mat, int **cls, int n)
 {
 	int	**cp; //copy_matrix(mat, n, n);
 
-	
-	printf("Hola que tal\n");
 	cp = copy_matrix(mat, n, n);
-	printf("Hola que tal\n%d\n", mat[0][0]);
 	rm_cls_rc(mat, cls, n);
 	rm_val_rc(mat, n);
-	print_matrix(mat, n, n);
 	return (cp);
 }
 

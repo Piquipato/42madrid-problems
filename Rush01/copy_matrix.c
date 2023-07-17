@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "latin.h"
 
 int	**copy_matrix(int **mat, int n, int m)
@@ -19,10 +20,11 @@ int	**copy_matrix(int **mat, int n, int m)
 	int	i;
 	int	j;
 
-	sol = (int **) malloc(sizeof(mat));
+	sol = make_matrix(n, m);
 	i = 0;
 	while (i < n)
 	{
+		j = 0;
 		while (j < m)
 			sol[i][j++] = mat[i][j];
 		i++;

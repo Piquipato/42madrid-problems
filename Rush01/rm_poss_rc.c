@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "latin.h"
 
 void	helper(int **mat, int n, int i, int j);
@@ -41,9 +42,9 @@ void	helper(int **mat, int n, int i, int j)
 	k = 0;
 	while (k < n)
 	{
-		if (!(mat[i][k] & mat[i][j] == 0))
+		if ((mat[i][k] & mat[i][j]) != 0 && k != j)
 			mat[i][k] ^= mat[i][j];
-		if (!(mat[k][j] & mat[i][j] == 0))
+		if ((mat[k][j] & mat[i][j]) != 0 && k != i)
 			mat[k][j] ^= mat[i][j];
 		k++;
 	}

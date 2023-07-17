@@ -32,8 +32,9 @@ void	rush_app(int n, char *str)
 	fill_matrix(matrix, n);
 	p = (int *) calloc(2, sizeof(int));
 	ft_solver(matrix, cls, n, p);
-	printf("I crashed before!");
-	check_result(matrix, n);
+	printf("--------------------------------\nFinal Matrix:\n");
+	print_matrix(matrix, n, n);
+	check_result(matrix, n, 1);
 	rm_matrix(cls);
 	rm_matrix(matrix);
 }

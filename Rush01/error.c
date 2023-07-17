@@ -13,22 +13,26 @@
 #include <unistd.h>
 #include "latin.h"
 
-void	check_result(int **mat, int n)
+int	check_result(int **mat, int n, int final)
 {
 	int	i;
 	int	j;
+	int dte;
 
 	i = 0;
+	dte = 1;
 	while (i < n)
 	{
 		j = 0;
 		while (j < n)
 		{
 			if (!(is_pow2(mat[i][j])))
-				write(1, "Error", 5);
+				dte = 0;
 			j++;
 		}
 		i++;
 	}
-	print_matrix(log_mat(mat, n), n, n);
+	if (dte == 0 && final)
+		write(1, "Error\n", 6);
+	return (dte);
 }

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "latin.h"
 
 void	rm_colup(int **mat, int **cls, int n)
@@ -24,11 +25,12 @@ void	rm_colup(int **mat, int **cls, int n)
 		i = 0;
 		while (i < n)
 		{
-			k = n - cls[0][j] + i + 3;
+			k = n - cls[0][j] + i + 2;
 			while (k <= n)
 			{
-				if (!(mat[i][j] & power(2, k) == 0))
+				if ((mat[i][j] & power(2, k)) != 0)
 					mat[i][j] ^= power(2, k);
+				
 				k++;
 			}
 			i++;
@@ -49,10 +51,10 @@ void	rm_coldown(int **mat, int **cls, int n)
 		i = 0;
 		while (i < n)
 		{
-			k = n - cls[1][j] + i + 3;
+			k = n - cls[1][j] + i + 2;
 			while (k <= n)
 			{
-				if (!(mat[n - 1 - i][j] & power(2, k) == 0))
+				if ((mat[n - 1 - i][j] & power(2, k)) != 0)
 					mat[n - 1 - i][j] ^= power(2, k);
 				k++;
 			}
@@ -67,17 +69,17 @@ void	rm_rowleft(int **mat, int **cls, int n)
 	int	i;
 	int	j;
 	int	k;
-
+	
 	i = 0;
 	while (i < n)
 	{
 		j = 0;
 		while (j < n)
 		{
-			k = n - cls[2][i] + j + 3;
+			k = n - cls[2][i] + j + 2;
 			while (k <= n)
 			{
-				if (!(mat[i][j] & power(2, k) == 0))
+				if ((mat[i][j] & power(2, k)) != 0)
 					mat[i][j] ^= power(2, k);
 				k++;
 			}
@@ -99,10 +101,10 @@ void	rm_rowright(int **mat, int **cls, int n)
 		j = 0;
 		while (j < n)
 		{
-			k = n - cls[3][i] + j + 3;
+			k = n - cls[3][i] + j + 2;
 			while (k <= n)
 			{
-				if (!(mat[i][n - 1 - j] & power(2, k) == 0))
+				if ((mat[i][n - 1 - j] & power(2, k)) != 0)
 					mat[i][n - 1 - j] ^= power(2, k);
 				k++;
 			}

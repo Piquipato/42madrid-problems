@@ -39,6 +39,6 @@ void	rm_rowright(int **mat, int **cls, int n);
 void	rm_val_rc(int **mat, int n);
 void	rm_cls_rc(int **mat, int **cls, int n);
 int 	**guess(int **mat, int **cls, int n, int *p);
-void	check_result(int **mat, int n);
+int		check_result(int **mat, int n, int final);
 
 #endif
