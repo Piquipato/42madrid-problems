@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plalanda <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 17:18:25 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/17 17:18:28 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/17 17:51:43 by plalanda          #+#    #+#             */
+/*   Updated: 2023/07/17 17:51:48 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2);
+char	*ft_strcat(char *dest, char *src);
 
 /*
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
-		printf("The first found difference is %d\n", ft_strcmp(argv[1], argv[2]));
+		printf("The concatenated string is %s\n", ft_strcat(argv[1], argv[2]));
 }
 */
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	k;
+	int	l;
 
 	k = 0;
-	while (s1[k] != '\0' && s2[k] != '\0')
+	while (dest[k] != '\0')
+		k++;
+	l = k;
+	k = 0;
+	while (src[k] != '\0')
 	{
-		if (s1[k] != s2[k])
-			break;
+		dest[k + l] = src[k];
 		k++;
 	}
-	return (s1[k] - s2[k]);
+	dest[k + l] = '\0';
+	return (dest);
 }
