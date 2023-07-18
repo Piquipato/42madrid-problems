@@ -51,7 +51,10 @@ int	**log_mat(int **mat, int n)
 	{
 		j = 0;
 		while (j < n)
-			mat[i][j++] = logar(mat[i][j], 2);
+		{
+			mat[i][j] = logar(mat[i][j], 2);
+			j++;
+		}
 		i++;
 	}
 	return (mat);
@@ -67,7 +70,10 @@ int	**pow_mat(int **mat, int n)
 	{
 		j = 0;
 		while (j < n)
-			mat[i][j++] = power(2, mat[i][j]);
+		{
+			mat[i][j] = power(2, mat[i][j]);
+			j++;
+		}
 		i++;
 	}
 	return (mat);

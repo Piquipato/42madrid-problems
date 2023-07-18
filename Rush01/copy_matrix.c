@@ -26,7 +26,10 @@ int	**copy_matrix(int **mat, int n, int m)
 	{
 		j = 0;
 		while (j < m)
-			sol[i][j++] = mat[i][j];
+		{
+			sol[i][j] = mat[i][j];
+			j++;
+		}
 		i++;
 	}
 	return (sol);
