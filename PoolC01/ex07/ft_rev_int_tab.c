@@ -13,7 +13,6 @@
 void	ft_rev_int_tab(int *tab, int size)
 {
 	int	orgarray[1024];
-	int	newarray[1024];
 	int	k;
 	int	*tmp;
 
