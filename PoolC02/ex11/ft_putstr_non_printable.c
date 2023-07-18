@@ -39,11 +39,13 @@ void	ft_putstr_non_printable(char *str)
 	}
 }
 
+/*
 int	main(int argc, char *argv[])
 {
 	char str[] = "Coucou\ntu vas bien ?";
 	ft_putstr_non_printable(str);
 }
+*/
 
 char	*to_base_alt(char *txt, int n, int s, char *base)
 {

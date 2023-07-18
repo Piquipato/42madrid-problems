@@ -13,18 +13,20 @@
 #include <string.h>
 #include <stdio.h>
 
-char	*ft_strlcpy(char *dest, char*src, unsigned int n)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	srcd;
-	int	k;
+	int				srcd;
+	unsigned int	k;
+	int				ret;
 
 	srcd = 1;
 	k = 0;
 	while (srcd)
 	{
-		if (*(src + k) == '\0' || k > n - 2)
+		if (*(src + k) == '\0' || k > size - 2)
 		{
 			*(dest + k) = '\0';
+			ret = k;
 			srcd = 0;
 		}
 		else
@@ -33,7 +35,7 @@ char	*ft_strlcpy(char *dest, char*src, unsigned int n)
 		}
 		k++;
 	}
-	return (dest);
+	return (ret);
 }
 
 int	main(void)
@@ -41,7 +43,7 @@ int	main(void)
 	char orStr[] = "Hello, World!";
 	char dstStr[strlen(orStr)+1];
 
-	ft_strlcpy(&dstStr[0], &orStr[0], 5);
+	printf("%d\n", ft_strlcpy(&dstStr[0], &orStr[0], 5));
 	printf("source string \"%s\" at address %d\n", orStr, &orStr);
 	printf("destination string \"%s\" at address %d\n", dstStr, &dstStr);
 	return (0);

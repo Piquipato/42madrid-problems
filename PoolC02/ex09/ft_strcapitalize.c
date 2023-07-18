@@ -15,13 +15,15 @@ int	is_between(int n, int a, int b);
 char	*ft_strcapitalize(char *str)
 {
 	char	*out;
-	int	cap_nxt;
+	int		cap_nxt;
 
 	out = str;
 	cap_nxt = 1;
 	while (*str != '\0')
 	{
-		if ((is_between(*str, 65, 90) || is_between(*str, 97, 122) || is_between(*str, 48, 57)) == 0)
+		if ((is_between(*str, 65, 90)
+				|| is_between(*str, 97, 122)
+				|| is_between(*str, 48, 57)) == 0)
 			cap_nxt = 1;
 		else
 		{

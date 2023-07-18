@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strlcpy(char *dest, char *src, unsigned int n);
-int		ft_strlen(char *str);
-
-char	*ft_strlcpy(char *dest, char *src, unsigned int n)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	srcd;
-	int	k;
+	int				srcd;
+	unsigned int	k;
+	int				ret;
 
 	srcd = 1;
 	k = 0;
 	while (srcd)
 	{
-		if (*(src + k) == '\0' || k > n - 2)
+		if (*(src + k) == '\0' || k > size - 2)
 		{
 			*(dest + k) = '\0';
+			ret = k;
 			srcd = 0;
 		}
 		else
@@ -33,18 +32,5 @@ char	*ft_strlcpy(char *dest, char *src, unsigned int n)
 		}
 		k++;
 	}
-	return (ft_strlen(src));
-}
-
-int	ft_strlen(char *str)
-{
-	int	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		count++;
-		str++;
-	}
-	return (count);
+	return (ret);
 }
