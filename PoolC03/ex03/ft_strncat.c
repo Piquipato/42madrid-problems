@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+// #include <stdio.h>
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb);
 
+/*
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
 		printf("The concatenated string is %s\n", ft_strncat(argv[1], argv[2], 5));
 }
+*/
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
@@ -30,7 +32,7 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 		k++;
 	l = k;
 	k = 0;
-	while (src[k] != '\0')
+	while (src[k] != '\0' && k < nb)
 	{
 		dest[k + l] = src[k];
 		k++;
