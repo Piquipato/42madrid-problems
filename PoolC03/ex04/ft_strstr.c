@@ -19,7 +19,9 @@ int	main(int argc, char **argv)
 {
 	if (argc == 3)
 	{
-		printf("The string %s is found in %s in the pointer %d (org %d)\n", argv[2], argv[1], ft_strstr(argv[1], argv[2]), &argv[1]);
+		char *ptr1 = ft_strstr(argv[1], argv[2]);
+		char *ptr2 = &argv[1];
+		printf("The string \"%s\" is found in \"%s\"\n", ptr1, argv[1]);
 	}
 }
 
@@ -30,20 +32,26 @@ char	*ft_strstr(char *str, char *to_find)
 	int	f;
 
 	s = 0;
-	f = 0;
+	ptr = 0;
 	while (str[s] != '\0')
 	{
-		if (str[s] == to_find[f] && to_find[f] != '\0')
+		f = 0;
+		if (to_find[f] == '\0')
+			return (str);
+		while (str[s + f] == to_find[f] && to_find[f] != '\0')
 		{
-			ptr = &to_find[0];
+			if (f == 0)
+				ptr = &str[s + f];
 			f++;
 		}
+		if (to_find[f] == '\0')
+			return (ptr);
 		else
 		{
-			ptr = NULL;
 			f = 0;
+			ptr = 0;
+			s++;
 		}
-		s++;
 	}
 	return (ptr);
 }
