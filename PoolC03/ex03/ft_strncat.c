@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	k;
-	int	l;
+	unsigned int	k;
+	int				l;
 
 	k = 0;
 	while (dest[k] != '\0')

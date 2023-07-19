@@ -18,7 +18,8 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
-		printf("The length of the concatenated string is %d\n", ft_strlcat(argv[1], argv[2], 5));
+		printf("The length of the concatenated string is %d\n", 
+			ft_strlcat(argv[1], argv[2], 5));
 }
 */
 

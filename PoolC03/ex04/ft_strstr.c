@@ -15,6 +15,7 @@
 
 char	*ft_strstr(char *str, char *to_find);
 
+/*
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
@@ -24,18 +25,19 @@ int	main(int argc, char **argv)
 		printf("The string \"%s\" is found in \"%s\"\n", ptr1, argv[1]);
 	}
 }
+*/
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char *ptr;
-	int	s;
-	int	f;
+	char	*ptr;
+	int		s;
+	int		f;
 
 	s = 0;
-	ptr = 0;
 	while (str[s] != '\0')
 	{
 		f = 0;
+		ptr = 0;
 		if (to_find[f] == '\0')
 			return (str);
 		while (str[s + f] == to_find[f] && to_find[f] != '\0')
@@ -46,12 +48,7 @@ char	*ft_strstr(char *str, char *to_find)
 		}
 		if (to_find[f] == '\0')
 			return (ptr);
-		else
-		{
-			f = 0;
-			ptr = 0;
-			s++;
-		}
+		s++;
 	}
 	return (ptr);
 }

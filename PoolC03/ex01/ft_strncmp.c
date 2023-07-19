@@ -30,7 +30,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	while ((s1[k] != '\0' && s2[k] != '\0'))
 	{
 		if (s1[k] != s2[k] || k >= n)
-			break;
+			break ;
 		k++;
 	}
 	return (s1[k] - s2[k]);
