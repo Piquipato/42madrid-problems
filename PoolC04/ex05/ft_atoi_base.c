@@ -1,56 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plalanda <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 13:49:09 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/19 13:49:11 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/19 14:18:06 by plalanda          #+#    #+#             */
+/*   Updated: 2023/07/19 14:18:08 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-// #include <stdlib.h>
+// #include <stdio.h>
 
-void	ft_putnbr(int nb, char *base);
-int		ft_strlen(char *str);
-int		check_base(char *base);
+int	ft_atoi_base(char *str, char *base);
+int	ft_strlen(char *str);
+int	check_base(char *base);
+int	ft_stridx(char ltr, char *str);
 
 /*
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
-		ft_putnbr(atoi(argv[2]), argv[1]);
+		printf("The number %s in base %s is %d", 
+			argv[2], argv[1], ft_atoi_base(argv[2], argv[1]));
 }
 */
 
-void	ft_putnbr(int nb, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
-	int	letra;
-	int	b;
+	unsigned int	num;
+	int				i;
+	int				np;
+	int				b;
 
 	b = check_base(base);
-	if (nb == -2147483648 && b != 0)
+	np = 1;
+	i = 0;
+	num = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
+		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			np = -1;
+	while (ft_stridx(str[i], base) != -1)
 	{
-		write(1, "-2", 2);
-		ft_putnbr(147483648, base);
+		num = num * b + ft_stridx(str[i], base);
+		i++;
 	}
-	else if (nb < 0 && b != 0)
+	if (b != 0)
+		return ((int)(np * num));
+	return (0);
+}
+
+int	ft_stridx(char ltr, char *str)
+{
+	const int	len = ft_strlen(str);
+	int			i;
+
+	i = 0;
+	while (i < len)
 	{
-		write(1, "-", 1);
-		nb = -nb;
-		ft_putnbr(nb, base);
+		if (str[i] == ltr)
+			return (i);
+		i++;
 	}
-	else if (nb > b - 1 && b != 0)
-	{
-		ft_putnbr(nb / b, base);
-		ft_putnbr(nb % b, base);
-	}
-	else if (b != 0)
-	{
-		write(1, &base[nb], 1);
-	}
+	return (-1);
 }
 
 int	ft_strlen(char *str)
