@@ -16,7 +16,7 @@ void	ft_putnbr(int nb)
 {
 	int	letra;
 
-	if (nb  == -2147483648)
+	if (nb == -2147483648)
 	{
 		write(1, "-2", 2);
 		ft_putnbr(147483648);
