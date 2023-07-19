@@ -13,6 +13,7 @@
 int	ft_find_next_prime(int nb);
 int	ft_is_prime(int nb);
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,6 +23,7 @@ int	main(int argc, char **argv)
 		printf("next_prime(%s) = %d",
 			argv[1], ft_find_next_prime(atoi(argv[1])));
 }
+*/
 
 int	ft_find_next_prime(int nb)
 {
