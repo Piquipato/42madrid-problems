@@ -12,6 +12,7 @@
 
 int	ft_sqrt(int nb);
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,6 +22,7 @@ int	main(int argc, char **argv)
 		printf("sqrt(%d) = %d\n",
 			atoi(argv[1]), ft_sqrt(atoi(argv[1])));
 }
+*/
 
 int	ft_sqrt(int nb)
 {
