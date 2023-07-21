@@ -15,6 +15,7 @@
 char	*ft_strncat(char *dest, char *src, unsigned int nb);
 
 /*
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
