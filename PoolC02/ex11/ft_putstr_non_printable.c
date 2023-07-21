@@ -23,6 +23,7 @@ void	ft_putstr_non_printable(char *str)
 	char	hex[66];
 	int		k;
 
+	k = 0;
 	while (str[k] != '\0')
 	{
 		if (!(str[k] >= 32 && str[k] <= 126))
@@ -40,7 +41,7 @@ void	ft_putstr_non_printable(char *str)
 }
 
 /*
-int	main(int argc, char *argv[])
+int	main(void)
 {
 	char str[] = "Coucou\ntu vas bien ?";
 	ft_putstr_non_printable(str);
