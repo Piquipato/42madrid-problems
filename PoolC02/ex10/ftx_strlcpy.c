@@ -15,27 +15,16 @@
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int				srcd;
 	unsigned int	k;
-	int				ret;
 
-	srcd = 1;
 	k = 0;
-	while (srcd)
+	while (!(*(src + k) == '\0' || k > size - 2))
 	{
-		if (*(src + k) == '\0' || k > size - 2)
-		{
-			*(dest + k) = '\0';
-			ret = k;
-			srcd = 0;
-		}
-		else
-		{
-			*(dest + k) = *(src + k);
-		}
+		*(dest + k) = *(src + k);
 		k++;
 	}
-	return (ret);
+	*(dest + k) = '\0';
+	return (k);
 }
 
 int	main(void)
