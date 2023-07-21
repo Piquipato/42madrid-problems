@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 
+/*
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	int			srcd;
@@ -31,6 +32,25 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 			*(dest + k) = *(src + k);
 			k++;
 		}
+	}
+	while (*(src + k) != '\0')
+	{
+		*(dest + k) = '\0';
+		k++;
+	}
+	return (dest);
+}
+*/
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	k;
+
+	k = 0;
+	while (!(*(src + k) == '\0' || k > n - 1))
+	{
+		*(dest + k) = *(src + k);
+		k++;
 	}
 	while (*(src + k) != '\0')
 	{
