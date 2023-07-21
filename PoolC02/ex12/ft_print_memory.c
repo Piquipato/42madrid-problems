@@ -19,11 +19,13 @@ void	to_hex(char *str, int n, int s);
 void	print_sfchar(char str);
 void	ft_print_memcol(void *addr, unsigned int size);
 
+/*
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
 		ft_print_memory(argv[1], atoi(argv[2]) );
 }
+*/
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
