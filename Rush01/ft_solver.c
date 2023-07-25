@@ -16,7 +16,7 @@
 int	**ft_solver(int **mat, int **cls, int n, int *p)
 {
 	int	k;
-	int **cp;
+	int	**cp;
 
 	k = 0;
 	cp = rm_impossible(mat, cls, n);
@@ -48,7 +48,7 @@ int	**guess(int **mat, int **cls, int n, int *p)
 	if (check_result(mat, n, 0))
 		return (mat);
 
-	
+
 	i = 0;
 	while (i < n)
 	{
@@ -56,9 +56,9 @@ int	**guess(int **mat, int **cls, int n, int *p)
 		while (g <= n && dtc != 0)
 		{
 			printf("Guess %d for position (%d, %d)\n", g, p[0], p[1]);
-			if ((!((mat[p[0]][i] == power(2, g) 
-			|| mat[i][p[1]] == power(2, g))
-			|| (is_pow2(mat[p[0]][p[1]]))))
+			if ((!((mat[p[0]][i] == power(2, g)
+						|| mat[i][p[1]] == power(2, g))
+				|| (is_pow2(mat[p[0]][p[1]]))))
 			&& ((mat[p[0]][p[1]] & power(2, g)) != 0))
 			{
 				dtc = mat[p[0]][p[1]];
