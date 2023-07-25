@@ -34,10 +34,10 @@ char	*ft_strstr(char *str, char *to_find)
 	int		f;
 
 	s = 0;
+	ptr = 0;
 	while (str[s] != '\0')
 	{
 		f = 0;
-		ptr = 0;
 		if (to_find[f] == '\0')
 			return (str);
 		while (str[s + f] == to_find[f] && to_find[f] != '\0')
@@ -48,6 +48,7 @@ char	*ft_strstr(char *str, char *to_find)
 		}
 		if (to_find[f] == '\0')
 			return (ptr);
+		ptr = 0;
 		s++;
 	}
 	return (ptr);

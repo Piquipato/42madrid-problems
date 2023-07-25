@@ -11,27 +11,60 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2);
-void	ft_swap(int *a, int *b);
+int		ft_strcmp(char *s1, char *s2);
+void	ft_swap(char **arg1, char **arg2);
+void	write_str(char *str);
+void	print_arglist(int argc, char **argv);
 
 int	main(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int	min_idx;
 
 	i = 1;
+	print_arglist(argc, argv);
 	while (i < argc - 1)
 	{
+		min_idx = i;
 		j = i + 1;
 		while (j < argc)
 		{
-			if ()
+			if (ft_strcmp(argv[j], argv[min_idx]) < 0)
+				min_idx = j;
 			j++;
 		}
+		if (min_idx != i)
+		{
+			printf("argv[%d] = %s\n", j, argv[j]);
+			ft_swap(&argv[i], &argv[j]);
+		}
+		//write_str(argv[i]);
+		printf("argv[%d] = %s\n", i, argv[i]);
+		//write(1, "\n", 1);
 		i++;
 	}
+	//write_str(argv[i]);
+	printf("%s\n", argv[i]);
+	//write(1, "\n", 1);
 	return (0);
+}
+
+void	print_arglist(int argc, char **argv)
+{
+	int	k;
+
+	write(1, "[ ", 2);
+	k = 1;
+	while (k < argc)
+	{
+		write_str(argv[k]);
+		write(1, " ", 1);
+		k++;
+	}
+	write(1, "]\n", 2);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -48,15 +81,13 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[k] - s2[k]);
 }
 
-void	ft_swap(int *a, int *b)
+void	ft_swap(char **arg1, char **arg2)
 {
-	int	tmpa;
-	int	tmpb;
+	char	*tmp;
 
-	tmpa = *a;
-	tmpb = *b;
-	*a = tmpb;
-	*b = tmpa;
+	tmp = *arg1;
+	*arg1 = *arg2;
+	*arg2 = tmp;
 }
 
 void	write_str(char *str)

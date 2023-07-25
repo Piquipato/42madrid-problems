@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	k;
-	int	l;
-	int	r;
+	unsigned int	k;
+	int				l;
+	int				r;
 
 	k = 0;
 	while (dest[k] != '\0')
