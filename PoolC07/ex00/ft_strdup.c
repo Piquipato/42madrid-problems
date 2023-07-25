@@ -14,6 +14,7 @@
 
 char	*ft_strdup(char *src);
 
+/*
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
@@ -26,6 +27,7 @@ int	main(int argc, char **argv)
 		printf("Copied String (at address %d): \"%s\"\n", &cp, cp);
 	}
 }
+*/
 
 char	*ft_strdup(char *src)
 {
