@@ -38,7 +38,6 @@ void	dict_app(int n, char *dictname, int k)
 	else
 	{
 		keys = segment_num(n);
-		print_list(keys);
 		while (k <= keys[0])
 		{
 			total_string = file_to_string(dictname, ' ', -1);
