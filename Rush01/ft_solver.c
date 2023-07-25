@@ -44,34 +44,32 @@ int	**guess(int **mat, int **cls, int n, int *p)
 	int	g;
 	int	i;
 	int	dtc;
-
-	if (check_result(mat, n, 0))
-		return (mat);
+	int	can_guess;
 
 
-	i = 0;
-	while (i < n)
+	g = 1;
+	while (g <= n && dtc != 0)
 	{
-		g = 1;
-		while (g <= n && dtc != 0)
+		printf("Guess %d for position (%d, %d)\n", g, p[0], p[1]);
+		i = 0;
+		can_guess = 1;
+		while (i < n)
 		{
-			printf("Guess %d for position (%d, %d)\n", g, p[0], p[1]);
 			if ((!((mat[p[0]][i] == power(2, g)
-						|| mat[i][p[1]] == power(2, g))
-				|| (is_pow2(mat[p[0]][p[1]]))))
-			&& ((mat[p[0]][p[1]] & power(2, g)) != 0))
-			{
-				dtc = mat[p[0]][p[1]];
-				mat[p[0]][p[1]] = power(2, g);
-				p[0] += 1;
-				printf("--------------------------------\nGuessed Matrix:\n");
-				print_matrix(mat, n, n);
-				return ft_solver(mat, cls, n, p);
-				mat[p[0]][p[1]] = dtc;
-			}
-			g++;
+					|| mat[i][p[1]] == power(2, g))
+					|| (is_pow2(mat[p[0]][p[1]])))))
+					can_guess = 0;
+			i++;
 		}
-		i++;
+		if (can_guess && ((mat[p[0]][p[1]] & power(2, g)) != 0))
+		{
+			dtc = mat[p[0]][p[1]];
+			mat[p[0]][p[1]] = power(2, g);
+			p[0] += 1;
+			printf("--------------------------------\nGuessed Matrix:\n");
+			print_matrix(mat, n, n);
+			return (mat);
+		}
+		g++;
 	}
-	return (make_matrix(n, n));
 }
