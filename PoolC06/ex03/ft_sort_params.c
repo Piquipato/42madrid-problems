@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	int	min_idx;
 
 	i = 1;
-	print_arglist(argc, argv);
 	while (i < argc - 1)
 	{
 		min_idx = i;
@@ -37,18 +36,13 @@ int	main(int argc, char **argv)
 			j++;
 		}
 		if (min_idx != i)
-		{
-			printf("argv[%d] = %s\n", j, argv[j]);
-			ft_swap(&argv[i], &argv[j]);
-		}
-		//write_str(argv[i]);
-		printf("argv[%d] = %s\n", i, argv[i]);
-		//write(1, "\n", 1);
+			ft_swap(&argv[i], &argv[min_idx]);
+		write_str(argv[i]);
+		write(1, "\n", 1);
 		i++;
 	}
-	//write_str(argv[i]);
-	printf("%s\n", argv[i]);
-	//write(1, "\n", 1);
+	write_str(argv[i]);
+	write(1, "\n", 1);
 	return (0);
 }
 
@@ -67,6 +61,15 @@ void	print_arglist(int argc, char **argv)
 	write(1, "]\n", 2);
 }
 
+void	ft_swap(char **arg1, char **arg2)
+{
+	char	*tmp;
+
+	tmp = *arg1;
+	*arg1 = *arg2;
+	*arg2 = tmp;
+}
+
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	k;
@@ -79,15 +82,6 @@ int	ft_strcmp(char *s1, char *s2)
 		k++;
 	}
 	return (s1[k] - s2[k]);
-}
-
-void	ft_swap(char **arg1, char **arg2)
-{
-	char	*tmp;
-
-	tmp = *arg1;
-	*arg1 = *arg2;
-	*arg2 = tmp;
 }
 
 void	write_str(char *str)
