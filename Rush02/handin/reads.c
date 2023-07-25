@@ -53,9 +53,7 @@ int	*read_hundred(int *digits)
 			out[idx++] = digits[3];
 	}
 	else
-	{
 		out[idx++] = digits[2] * 10 + digits[3];
-	}
 	free(digits);
 	return (out);
 }

@@ -23,7 +23,7 @@ int	calc_size(int *digits)
 		size -= 2;
 	if (digits[2] == 0 || (digits[2] == 1 && digits[3] != 0))
 		size--;
-	if (digits[3] == 0)
+	if (digits[3] == 0 && digits[1] != 0 && digits[2] != 0)
 		size--;
 	return (size);
 }
