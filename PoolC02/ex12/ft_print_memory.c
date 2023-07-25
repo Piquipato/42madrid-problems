@@ -52,13 +52,13 @@ void	ft_print_memcol(void *addr, unsigned int size)
 	char				char_hex[3];
 	unsigned int		p;
 
-	to_hex(addr_hex, (int) addr, 16);
+	to_hex(addr_hex, (unsigned int) addr, 16);
 	write(1, ": ", 2);
 	p = 0;
 	while (p < 16)
 	{
 		if (p < size)
-			to_hex(char_hex, *((int *)(addr + p)), 2);
+			to_hex(char_hex, *((unsigned int *)(addr + p)), 2);
 		else
 			write(1, "  ", 2);
 		if (p % 2 == 1)
