@@ -18,6 +18,21 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	k;
 
 	k = 0;
+	while (k < size - 1 && src[k])
+	{
+		dest[k] = src[k];
+		k++;
+	}
+	dest[size - 1] = '\0';
+	return (k);
+}
+
+/*
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	k;
+
+	k = 0;
 	while (!(*(src + k) == '\0' || k > size - 2))
 	{
 		*(dest + k) = *(src + k);
@@ -26,6 +41,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	*(dest + k) = '\0';
 	return (k);
 }
+*/
 
 int	main(void)
 {

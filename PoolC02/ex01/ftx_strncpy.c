@@ -44,6 +44,26 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
+	int		k;
+
+	k = 0;
+	while (src[k] != '\0' && n)
+	{
+		dest[k] = src[k];
+		k++;
+		n--;
+	}
+	while (n)
+	{
+		dest[k] = '\0';
+		k++;
+		n--;
+	}
+	return (dest);
+}
+/*
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
 	unsigned int	k;
 
 	k = 0;
@@ -59,6 +79,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	}
 	return (dest);
 }
+*/
 
 int	main(void)
 {
@@ -66,7 +87,7 @@ int	main(void)
 	char dstStr[strlen(orStr)+1];
 
 	ft_strncpy(&dstStr[0], &orStr[0], 5);
-	printf("source string \"%s\" at address %d\n", orStr, &orStr);
-	printf("destination string \"%s\" at address %d\n", dstStr, &dstStr);
+	printf("source string \"%s\"\n", orStr);
+	printf("destination string \"%s\"\n", dstStr);
 	return (0);
 }

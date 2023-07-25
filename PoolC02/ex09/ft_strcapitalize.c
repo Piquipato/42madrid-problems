@@ -15,6 +15,34 @@ int		is_between(int n, int a, int b);
 
 char	*ft_strcapitalize(char *str)
 {
+	char	*tmp;
+	int		k;
+
+	k = 1;
+	tmp = str;
+	while (*str)
+	{
+		if (!(*str <= 'z' && *str >= 'a') && !(*str >= 'A' && *str <= 'Z'))
+			k = 1;
+		if (*str >= '0' && *str <= '9')
+			k = 0;
+		if (*str >= 'A' && *str <= 'Z')
+		{
+			*str = *str + 32;
+		}
+		if ((*str >= 'a' && *str <= 'z') && k == 1)
+		{
+			*str = *str - 32;
+			k = 0;
+		}
+		str++;
+	}
+	return (tmp);
+}
+
+/*
+char	*ft_strcapitalize(char *str)
+{
 	char	*out;
 	int		cap_nxt;
 
@@ -50,3 +78,4 @@ int	is_between(int n, int a, int b)
 		return (0);
 	}
 }
+*/
