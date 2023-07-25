@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "natnum.h"
 
 void	ft_putnbr(int nb)
@@ -67,4 +68,20 @@ int	check_digits(char *str)
 		str++;
 	}
 	return (1);
+}
+
+int	*one_list(int n, int size)
+{
+	int	*out;
+	int	k;
+
+	out = (int *) malloc((size + 1) * sizeof(int));
+	out[0] = size;
+	k = 1;
+	while (k <= size)
+	{
+		out[k] = n;
+		k++;
+	}
+	return (out);
 }

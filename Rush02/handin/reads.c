@@ -82,5 +82,7 @@ int	*read_digits(int *digits)
 
 int	*segment_num(int n)
 {
+	if (n == 0)
+		return (one_list(0, 1));
 	return (read_digits(digit_list(n)));
 }

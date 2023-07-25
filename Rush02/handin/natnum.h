@@ -25,6 +25,7 @@ int		*empty_list(void);
 int		*power(int base, int exp);
 void	print_list(int *list);
 int		magnitude(int n);
+int		*one_list(int n, int size);
 
 // List Mods:
 int		*append_elm(int *l1, int *l2);
