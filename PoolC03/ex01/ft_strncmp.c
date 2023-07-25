@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
+//#include <stdio.h>
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 }
 */
 
+/*
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	int	k;
@@ -34,4 +35,26 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 		k++;
 	}
 	return (s1[k] - s2[k]);
+}
+*/
+
+int	ft_strncmp(char *str1, char *str2, unsigned int n)
+{
+	while (*str1 && *str2 && n > 0)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		n--;
+		str2++;
+	}
+	if (*str1 && n > 0)
+	{
+		return (*str1 - '\0');
+	}
+	else if (*str2 && n > 0)
+	{
+		return ('\0' - *str2);
+	}
+	return (0);
 }
