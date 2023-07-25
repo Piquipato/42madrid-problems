@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	{
 		if (atoi(argv[1]) < atoi(argv[2]))
 			print_list(ft_range(atoi(argv[1]), atoi(argv[2])), 
-			atoi(argv[2]) - atoi(argv[1]) + 1);
+			atoi(argv[2]) - atoi(argv[1]));
 		else
 			printf("%d\n", ft_range(atoi(argv[1]), atoi(argv[2])));
 	}
@@ -48,8 +48,8 @@ int	*ft_range(int min, int max)
 
 	if (min >= max)
 		return (0);
-	out = (int *) malloc((max - min + 1) * sizeof(int));
-	while (min <= max)
+	out = (int *) malloc((max - min) * sizeof(int));
+	while (min < max)
 	{
 		out[min] = min;
 		min++;
