@@ -23,7 +23,9 @@ void	ft_print_memcol(void *addr, unsigned int size);
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
-		ft_print_memory(argv[1], atoi(argv[2]) );
+		ft_print_memory(argv[1], atoi(argv[2]));
+	if (argc == 2)
+		ft_print_memory("Vim Lovers", atoi(argv[1]));
 }
 */
 
