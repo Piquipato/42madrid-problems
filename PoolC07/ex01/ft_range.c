@@ -14,7 +14,7 @@
 
 int	*ft_range(int min, int max);
 
-/**/
+/*
 #include <stdio.h>
 void	print_list(int *list, int size);
 
@@ -40,7 +40,7 @@ void	print_list(int *list, int size)
 		printf("%d ",list[k++]);
 	printf("]\n");
 }
-/**/
+*/
 
 int	*ft_range(int min, int max)
 {

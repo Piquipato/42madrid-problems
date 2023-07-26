@@ -15,7 +15,7 @@
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-	int tmp;
+	int	tmp;
 
 	if (min >= max)
 	{
@@ -35,7 +35,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (max - min);
 }
 
-/**/
+/*
 #include <stdio.h>
 void	print_list(int *list, int size);
 
@@ -71,4 +71,4 @@ void	print_list(int *list, int size)
 		printf("%d ",list[k++]);
 	printf("]\n");
 }
-/**/
+*/
