@@ -14,7 +14,7 @@
 
 int	*ft_range(int min, int max);
 
-/*
+/**/
 #include <stdio.h>
 void	print_list(int *list, int size);
 
@@ -34,24 +34,26 @@ void	print_list(int *list, int size)
 {
 	int	k;
 
-	k = 1;
+	k = 0;
 	printf("[ ");
-	while (k <= size)
+	while (k < size)
 		printf("%d ",list[k++]);
 	printf("]\n");
 }
-*/
+/**/
 
 int	*ft_range(int min, int max)
 {
 	int	*out;
+	int	k;
 
 	if (min >= max)
 		return (0);
 	out = (int *) malloc((max - min) * sizeof(int));
+	k = 0;
 	while (min < max)
 	{
-		out[min] = min;
+		out[k++] = min;
 		min++;
 	}
 	return (out);
