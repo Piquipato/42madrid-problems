@@ -40,9 +40,9 @@ int	ft_atoi_base(char *str, char *base)
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
 		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
 		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
-			np = -1;
+			np *= -1;
 	while (ft_stridx(str[i], base) != -1)
 	{
 		num = num * b + ft_stridx(str[i], base);
