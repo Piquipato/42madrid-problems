@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 int		ft_ten_queens_puzzle(void);
 int		backtrack(int *board, int col, int n);
@@ -20,38 +18,34 @@ int		is_safe(int *board, int col, int row, int n);
 void	print_list(int *list, int n);
 void	ft_putnbr(int nb);
 
+/*
+#include <stdio.h>
 int	main(void)
 {
 	printf("Have I found a solution? %d\n", ft_ten_queens_puzzle());
 	return (0);
 }
+*/
 
 int	ft_ten_queens_puzzle(void)
 {
-	int	*board;
+	int	board[10];
 	int	i;
 	int	n;
 	int	sum;
 
 	n = 10;
-	board = (int *) malloc(n * sizeof(int));
 	i = 0;
 	while (i < n)
 		board[i++] = -1;
-	while (backtrack(board, 0, n) && sum < 100)
-	{
-		i = 0;
-		while (i < n)
-			board[i++] = -1;
-		sum++;
-	}
-	free(board);
+	sum = backtrack(board, 0, n);
 	return (sum);
 }
 
 int	backtrack(int *board, int col, int n)
 {
 	int	row;
+	int	sum;
 
 	if (col >= n)
 	{
@@ -59,18 +53,18 @@ int	backtrack(int *board, int col, int n)
 		return (1);
 	}
 	row = 0;
+	sum = 0;
 	while (row < n)
 	{
 		if (is_safe(board, col, row, n))
 		{
 			board[col] = row;
-			if (backtrack(board, col + 1, n))
-				return (1);
+			sum += backtrack(board, col + 1, n);
 			board[col] = -1;
 		}
 		row++;
 	}
-	return (0);
+	return (sum);
 }
 
 int	is_safe(int *board, int col, int row, int n)
