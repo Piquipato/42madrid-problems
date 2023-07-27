@@ -14,11 +14,13 @@
 
 int	ft_atoi(const char *str);
 
+/*
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		printf("The inputed number is %d\n", ft_atoi(argv[1]));
 }
+*/
 
 int	ft_atoi(const char *str)
 {
