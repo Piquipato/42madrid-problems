@@ -13,7 +13,7 @@
 #include <unistd.h>
 // #include <stdlib.h>
 
-void	ft_putnbr(int nb, char *base);
+void	ft_putnbr_base(int nb, char *base);
 int		ft_strlen(char *str);
 int		check_base(char *base);
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 }
 */
 
-void	ft_putnbr(int nb, char *base)
+void	ft_putnbr_base(int nb, char *base)
 {
 	int	letra;
 	int	b;
@@ -34,18 +34,18 @@ void	ft_putnbr(int nb, char *base)
 	if (nb == -2147483648 && b != 0)
 	{
 		write(1, "-2", 2);
-		ft_putnbr(147483648, base);
+		ft_putnbr_base(147483648, base);
 	}
 	else if (nb < 0 && b != 0)
 	{
 		write(1, "-", 1);
 		nb = -nb;
-		ft_putnbr(nb, base);
+		ft_putnbr_base(nb, base);
 	}
 	else if (nb > b - 1 && b != 0)
 	{
-		ft_putnbr(nb / b, base);
-		ft_putnbr(nb % b, base);
+		ft_putnbr_base(nb / b, base);
+		ft_putnbr_base(nb % b, base);
 	}
 	else if (b != 0)
 	{

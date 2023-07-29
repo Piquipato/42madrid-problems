@@ -12,6 +12,7 @@
 
 int	ft_fibonacci(int index);
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,6 +22,7 @@ int	main(int argc, char **argv)
 		printf("fib(%d) = %d\n",
 			atoi(argv[1]), ft_fibonacci(atoi(argv[1])));
 }
+*/
 
 int	ft_fibonacci(int index)
 {

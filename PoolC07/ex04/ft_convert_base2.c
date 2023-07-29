@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plalanda <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: plalanda <plalanda@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 14:18:06 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/19 14:18:08 by plalanda         ###   ########.fr       */
+/*   Created: 2023/07/27 19:02:20 by plalanda          #+#    #+#             */
+/*   Updated: 2023/07/27 19:02:39 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-
 int	ft_atoi_base(char *str, char *base);
+int	ft_stridx(char ltr, char *str);
 int	ft_strlen(char *str);
 int	check_base(char *base);
-int	ft_stridx(char ltr, char *str);
-
-/*
-int	main(int argc, char **argv)
-{
-	if (argc == 3)
-		printf("The number %s in base %s is %d", 
-			argv[2], argv[1], ft_atoi_base(argv[2], argv[1]));
-}
-*/
 
 int	ft_atoi_base(char *str, char *base)
 {

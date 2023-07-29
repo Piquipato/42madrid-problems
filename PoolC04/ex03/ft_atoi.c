@@ -14,11 +14,13 @@
 
 int	ft_atoi(const char *str);
 
+/*
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
 		printf("The inputed number is %d\n", ft_atoi(argv[1]));
 }
+*/
 
 int	ft_atoi(const char *str)
 {
@@ -32,9 +34,9 @@ int	ft_atoi(const char *str)
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
 		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
 		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
-			np = -1;
+			np *= -1;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');

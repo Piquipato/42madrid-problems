@@ -12,6 +12,7 @@
 
 int	ft_recursive_power(int nb, int power);
 
+/*
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -21,6 +22,7 @@ int	main(int argc, char **argv)
 		printf("%s ^ %s = %d\n",
 			argv[1], argv[2], ft_recursive_power(atoi(argv[1]), atoi(argv[2])));
 }
+*/
 
 int	ft_recursive_power(int nb, int power)
 {
