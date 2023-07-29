@@ -6,11 +6,11 @@
 /*   By: plalanda <plalanda@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:09:49 by plalanda          #+#    #+#             */
-/*   Updated: 2023/07/26 20:09:52 by plalanda         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:23:26 by plalanda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	
+	printf("Wow my friend!");
 }
